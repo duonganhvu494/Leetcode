@@ -1,0 +1,15 @@
+class Solution {
+    public int maximumEnergy(int[] energy, int k) {
+        int n = energy.length;
+        int ans = Integer.MIN_VALUE;
+        for (int r = 0; r < k; r++) {
+            int curr = 0;
+            int j = n - 1 - ((n - 1 - r) % k);
+            for (; j >= 0; j -= k) {
+                curr += energy[j];
+                if (curr > ans) ans = curr;
+            }
+        }
+        return ans;
+    }
+}
